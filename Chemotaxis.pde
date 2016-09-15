@@ -5,17 +5,20 @@ Bacteria [] colony;
  	size(600,600);
  	background(155);
 
- 	colony = new Bacteria[8];
+ 	colony = new Bacteria[15];
+
  	for (int i=0; i<colony.length; i++){
- 		colony[i]= new Bacteria;
+ 		colony[i] = new Bacteria();
+ 	}
  }   
  void draw()   
  {    
  	background(155);
 
  	for(int i=0; i<colony.length; i++){
- 		colony[i].move();
  		colony[i].show();
+ 		colony[i].move();
+ 		
  	}
 
  	
@@ -30,12 +33,27 @@ Bacteria [] colony;
  	}
 
  	void move(){
- 		myX += (int)(Math.random()*3)-1;
- 		myY += (int)(Math.random()*3)-1;
+
+ 		if (mouseX > myX){
+ 			myX += (int)(Math.random()*5)-1;
+ 			// myY += (int)(Math.random()*5)-2;
+ 		}
+
+ 		if (mouseX < myX){
+ 			myX += (int)(Math.random()*5)-3;
+ 			// myY += (int)(Math.random()*5)-2;
+ 		}
+ 		if (mouseY < myY) {
+ 			myY += (int)(Math.random()*5)-3;
+ 		}
+ 		if (mouseY > myY) {
+ 			myY += (int)(Math.random()*5)-1;
+ 		}
+ 		
  	}
 
  	void show(){
  		fill(255,0,0);
- 		ellipse(myX, myY, 5, 5);
+ 		ellipse(myX, myY, 20, 20);
  	}
  }    
