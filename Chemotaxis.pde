@@ -1,5 +1,6 @@
 Bacteria [] colony;
 
+int numTouches = 0;
  void setup()   
  {     
  	size(600,600);
@@ -21,39 +22,53 @@ Bacteria [] colony;
  		
  	}
 
+ 	textSize(40);
+ 	text(numTouches, 250, 400);
+
  	
  }  
- class Bacteria    
- {     
+ class Bacteria {
+
  	int myX, myY;
+ 	int myR, myG, myB;
 
  	Bacteria(){
  		myX = (int)(Math.random()*500);
  		myY = (int)(Math.random()*500);
+
+ 		myR = (int)(Math.random()*255);
+ 		myG = (int)(Math.random()*255);
+ 		myB = (int)(Math.random()*255);
  	}
 
- 	void move(){
-
- 		if (mouseX > myX){
- 			myX += (int)(Math.random()*5)-1;
- 			// myY += (int)(Math.random()*5)-2;
- 		}
+ 	void move() {
 
  		if (mouseX < myX){
- 			myX += (int)(Math.random()*5)-3;
- 			// myY += (int)(Math.random()*5)-2;
+ 			myX += (int)(Math.random()*5)-1;
  		}
- 		if (mouseY < myY) {
- 			myY += (int)(Math.random()*5)-3;
+
+ 		if (mouseX > myX){
+ 			myX += (int)(Math.random()*5)-3;
+ 		}
+ 		if (mouseX == myX){
+ 			myX += (int)(Math.random()*5)-2;
  		}
  		if (mouseY > myY) {
+ 			myY += (int)(Math.random()*5)-3;
+ 		}
+ 		if (mouseY < myY) {
  			myY += (int)(Math.random()*5)-1;
  		}
- 		
+ 		if (mouseY == myX){
+ 			myY += (int)(Math.random()*5)-2;
+ 		}
+ 		if (mouseY==myY && mouseX==myX){
+ 			numTouches += 1;
+ 		}
  	}
 
  	void show(){
- 		fill(255,0,0);
+ 		fill(myR,myG,myB);
  		ellipse(myX, myY, 20, 20);
  	}
  }    
