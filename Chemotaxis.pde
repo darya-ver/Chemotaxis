@@ -45,10 +45,16 @@ int numTouches = 0;
 
  		if (mouseX < myX){
  			myX += (int)(Math.random()*5)-1;
+ 			if (myX<=0){
+ 				myX += 2;
+ 			}
  		}
 
  		if (mouseX > myX){
  			myX += (int)(Math.random()*5)-3;
+ 			if (myX<=600){
+ 				myX -= 2;
+ 			}
  		}
  		if (mouseX == myX){
  			myX += (int)(Math.random()*5)-2;
@@ -65,6 +71,11 @@ int numTouches = 0;
  		if (mouseY==myY && mouseX==myX){
  			numTouches += 1;
  		}
+ 		// myX += (int)(Math.random()*5)-1;
+
+ 		// if (myX<=400){
+ 		// 		myX += 10;
+ 		// 	}
  	}
 
  	void show(){
